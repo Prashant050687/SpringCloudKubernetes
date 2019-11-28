@@ -1,6 +1,6 @@
 package com.prashant.common.dto;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * Blog DTO
@@ -12,7 +12,7 @@ public class BlogDTO {
   String author;
   String topic;
 
-  Set<PostDTO> posts;
+  List<PostDTO> posts;
 
   public Long getId() {
     return id;
@@ -38,11 +38,11 @@ public class BlogDTO {
     this.topic = topic;
   }
 
-  public Set<PostDTO> getPosts() {
+  public List<PostDTO> getPosts() {
     return posts;
   }
 
-  public void setPosts(Set<PostDTO> posts) {
+  public void setPosts(List<PostDTO> posts) {
     this.posts = posts;
   }
 

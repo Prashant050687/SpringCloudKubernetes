@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.prashant.blog.service.BlogService;
 import com.prashant.common.dto.BlogDTO;
+import com.prashant.common.dto.PostDTO;
 
 @RestController
 @RequestMapping("/blog")
@@ -18,6 +19,9 @@ public class BlogController {
 
   @Autowired
   private BlogService blogService;
+
+  @Autowired
+  private PostClient postClient;
 
   @GetMapping(value = "/all")
   public ResponseEntity<List<BlogDTO>> findAllBlogs() {
@@ -27,6 +31,12 @@ public class BlogController {
 
   @GetMapping(value = "/{id}")
   public ResponseEntity<BlogDTO> findBlogWithBlogId(@PathVariable Long id) {
+
+    BlogDTO blogDTO = blogService.findBlogById(id);
+    // Making inter-service calls using Feign client
+    ResponseEntity<List<PostDTO>> postsResponse = postClient.findPostWithBlogId(id);
+    blogDTO.setPosts(postsResponse.getBody());
+
     return ResponseEntity.ok(blogService.findBlogById(id));
 
   }
