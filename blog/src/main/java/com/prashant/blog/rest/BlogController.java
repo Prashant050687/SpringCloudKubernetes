@@ -20,7 +20,7 @@ public class BlogController {
   @Autowired
   private BlogService blogService;
 
-  @Autowired
+  @Autowired(required = false)
   private PostClient postClient;
 
   @GetMapping(value = "/all")
@@ -37,7 +37,7 @@ public class BlogController {
     ResponseEntity<List<PostDTO>> postsResponse = postClient.findPostWithBlogId(id);
     blogDTO.setPosts(postsResponse.getBody());
 
-    return ResponseEntity.ok(blogService.findBlogById(id));
+    return ResponseEntity.ok(blogDTO);
 
   }
 }

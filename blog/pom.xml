@@ -5,18 +5,22 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.prashant</groupId>
-		<artifactId>spring-cloud-kubernetes-parent</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../spring-cloud-kubernetes-parent</relativePath>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.0.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-
+	<groupId>com.prashant</groupId>
 	<artifactId>blog</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 	<name>blog</name>
 	<description>Demo project for Blog microservice</description>
 
 	<properties>
 		<java.version>1.8</java.version>
+		<swagger.version>2.9.2</swagger.version>
+		<spring-cloud-kubernetes.version>1.0.0.RELEASE</spring-cloud-kubernetes.version>
+		<spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
 	</properties>
 
 	<dependencies>
@@ -32,12 +36,13 @@
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
-
+			<version>${swagger.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${swagger.version}</version>
 		</dependency>
 
 		<dependency>
@@ -45,20 +50,6 @@
 			<artifactId>h2</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-kubernetes-ribbon</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-openfeign</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>com.prashant</groupId>
@@ -70,9 +61,32 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+
 		</dependency>
 	</dependencies>
+<!--  
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-kubernetes-all</artifactId>
+				<version>${spring-cloud-kubernetes.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+		</dependencies>
+
+	</dependencyManagement>
+-->
 	<build>
 		<plugins>
 			<plugin>
