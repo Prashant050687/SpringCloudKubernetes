@@ -41,4 +41,5 @@ spec:
           #same port as mentioned in applciations application.properties
           ports:
             - containerPort: 7111
+          imagePullPolicy: "Always"
           

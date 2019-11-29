@@ -12,6 +12,6 @@ import com.prashant.common.dto.PostDTO;
 @FeignClient(name = "post-service")
 public interface PostClient {
 
-  @GetMapping(value = "/blog/{blogId}")
+  @GetMapping(value = "/post/blog/{blogId}")
   public ResponseEntity<List<PostDTO>> findPostWithBlogId(@PathVariable Long blogId);
 }
